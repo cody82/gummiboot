@@ -1,0 +1,66 @@
+<!DOCTYPE CrossStudio_Project_File>
+<solution Name="test" target="8" version="2">
+  <project Name="test">
+    <configuration
+      Name="Common"
+      arm_architecture="v7M"
+      arm_core_type="Cortex-M3"
+      arm_endian="Little"
+      arm_fp_abi="Soft"
+      arm_fpu_type="None"
+      arm_linker_heap_size="1024"
+      arm_linker_process_stack_size="0"
+      arm_linker_stack_size="1024"
+      arm_simulator_memory_simulation_parameter="RX 08000000,00010000,FFFFFFFF;RWX 20000000,00005000,CDCDCDCD"
+      arm_target_device_name="STM32F103C8"
+      arm_target_interface_type="SWD"
+      debug_target_connection="J-Link"
+      linker_output_format="hex"
+      linker_section_placement_file="$(ProjectDir)/flash_placement.xml"
+      linker_section_placements_segments="FLASH RX 0x08000000 0x00010000;SRAM RWX 0x20000000 0x00005000"
+      project_directory=""
+      project_type="Executable" />
+    <folder Name="Source Files">
+      <configuration Name="Common" filter="c;cpp;cxx;cc;h;s;asm;inc" />
+      <file file_name="main.c" />
+      <file file_name="mpu9250.c" />
+      <file file_name="mpu9250.h" />
+      <file file_name="sbus.c" />
+      <file file_name="sbus.h" />
+    </folder>
+    <folder Name="RTT Files">
+      <file file_name="SEGGER_RTT.c" />
+      <file file_name="SEGGER_RTT.h" />
+      <file file_name="SEGGER_RTT_Conf.h" />
+      <file file_name="SEGGER_RTT_Syscalls_SES.c" />
+    </folder>
+    <folder Name="System Files">
+      <file file_name="thumb_crt0.s" />
+      <file file_name="Cortex_M_Startup.s" />
+      <file file_name="HardFaultHandler.S" />
+      <file file_name="SEGGER_HardFaultHandler.c" />
+    </folder>
+    <configuration
+      Name="Debug"
+      c_preprocessor_definitions="STM32F1"
+      c_user_include_directories=".;./libopencm3/include"
+      debug_register_definition_file="C:\Users\cody\Documents\STM32F101.svd"
+      linker_additional_files="./libopencm3/lib/libopencm3_stm32f1.a" />
+    <configuration
+      Name="Release"
+      c_preprocessor_definitions="STM32F1"
+      c_user_include_directories=".;./libopencm3/include."
+      linker_additional_files="./libopencm3/lib/libopencm3_stm32f1.a" />
+  </project>
+  <configuration
+    Name="Debug"
+    c_preprocessor_definitions="DEBUG"
+    gcc_debugging_level="Level 3"
+    gcc_optimization_level="None" />
+  <configuration
+    Name="Release"
+    c_preprocessor_definitions="NDEBUG"
+    gcc_debugging_level="None"
+    gcc_omit_frame_pointer="Yes"
+    gcc_optimization_level="Level 1" />
+</solution>
